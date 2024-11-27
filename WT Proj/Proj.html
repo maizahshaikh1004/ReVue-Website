@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReVue Review Website</title>
+    
+    
+         <style>
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 25%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    background-color: black;
+    font-size: 20px;
+}
+
+/*.dropdown:hover .dropdown-content {
+    display: block;
+}*/
+
+.dropdown-content a {
+    display: block;
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    color: black;
+    background-color: #ebeded;
+    border-radius: 5px;
+}
+
+nav {
+    flex-grow: 1;
+    margin-left: 800px;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+nav ul li {
+    margin: 0 10px;
+}
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    
+}
+nav ul li a:hover {
+    background-color: black;
+   color: #e50914;
+
+    border-radius: 5px;
+}
+            #action-movies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 2%;
+        }
+
+        .flip-card-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+           
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 350px;
+            height: 350px;
+            perspective: 1000px;
+          
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        .flip-card-back {
+            background-color: black;
+            color: whitesmoke;
+            transform: rotateY(180deg);
+        }
+
+        .review-section {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 1050px;
+    height: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.review-section h2 {
+    color: #e50914;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.review-form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.review-form input[type="text"],
+.review-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    color: #e5e5e5;
+    font-size: 14px;
+}
+
+.review-form input[type="text"]::placeholder,
+.review-form textarea::placeholder {
+    color: #b3b3b3;
+}
+
+.review-form button {
+    background-color: #e50914;
+    color: #ffffff;
+    margin-top: 40px;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.review-form button:hover {
+    background-color: #d40813;
+}
+
+.review-form input:focus,
+.review-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px #e50914;
+}
+
+.contact-section {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1050px;
+    height: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.contact-section h2 {
+    color: #e50914;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 30px;
+    
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    color: #e5e5e5;
+    font-size: 14px;
+}
+
+.contact-form input[type="text"]::placeholder,
+.contact-form input[type="email"]::placeholder,
+.contact-form textarea::placeholder {
+    color: #b3b3b3;
+}
+
+.contact-form button {
+    background-color: #e50914;
+    color: #ffffff;
+    margin-top: 40px;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #d40813;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px #e50914;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+         </style>
+</head>
+<body style="background-color: rgb(172, 11, 11); ">
+
+    
+        <div id="hero" style=" background-image: url(netfliximg.jpg) ; height: 480px;  ">
+            <h1 style="color: rgb(210, 18, 18); font-size: 50px;"   id="heading">ReVue</h1>
+       
+            <nav>
+                <ul>
+                    
+                    <li><a href="#aboutus">About Us</a></li>
+                    <li><a href="#review">Reviews</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>    
+        
+        <div  class="dropdown" >
+            <button id="genre-button" style="font-size: 25px; color: black;background-color: white; border-radius: 5px; margin-left: 5px;">Genre</button>
+        
+        <div class="dropdown-content" id="genre-dropdown">
+            <a  rel="noopener"  href="#action">Action Movies</a>
+            <a rel="noopener"  href="#romance">Romantic Movies</a>
+            <a rel="noopener"  href="#trending">Trending Movies</a>
+        </div></div>
+        <br>
+        <br>
+        <p style="color: aliceblue;font-size: 50px; text-align: center;">Unlimited movies, TV shows and more. <br>
+        Watch anywhere. Cancel anytime.</p>
+    </div>
+    
+    <h1 style="text-align: center; background-color: black;color: white; font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">About Us</h1>
+    <section id="aboutus" style="background-color:  rgba(108, 14, 14, 0.5) ; height: 450px; margin-left: 18%; margin-top: 30px; width: 800px; border-radius: 10px;">
+        
+        <div id="abtuscontent" >
+        
+        
+        <p style="color: white; font-size: 50px; text-align: center; "><br><br>Stories move us. <br>
+            They make us feel more emotion,<br> see new perspectives,<br>
+            and bring us closer to each other.</p>
+        </div>
+    </section>
+    <div style="background-color: black"  ><center><h1 id="action" style="color: white; ; height: 60px; margin-top: 15px;font-size: 50px; font-family:'Times New Roman', Times, serif ; ">Action Movies</h1></center></div>
+    <section id="actionslideshow">
+        <img class="action" src="action1.jpg" alt="action1" style="width: 100%; height: 500px;">
+        <img class="action" src="action2.png" alt="action2" style="width: 100%; height: 500px">
+        <img class="action" src="mission.png" alt="action3" style="width: 100%; height: 500px">
+        <img class="action" src="action4.jpg" alt="action4" style="width: 100%; height: 500px">
+
+    </section>
+    
+  
+
+<div>
+  <section id="action-movies">
+      <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="jawan.jpg" alt="jawan" style="width:350px;height:350px;">
+              </div>
+              <div class="flip-card-back">
+                  <h1>Jawan Movie</h1> 
+                  <p>Starring: Shah Rukh Khan</p> 
+                  <p>A man is driven by a personal vendetta to rectify the wrongs in society, while keeping a promise made years ago. He comes up against a monstrous outlaw with no fear, who has caused extreme suffering to many.</p>
+              </div>
+          </div>
+      </div>
+      
+      <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="pathaan.jpg" alt="pathaan" style="width:350px;height:350px;">
+              </div>
+              <div class="flip-card-back">
+                  <h1>Pathaan Movie</h1> 
+                  <p>Starring: Shah Rukh Khan</p> 
+                  <p>"Pathaan" is a 2023 Hindi action thriller where an exiled RAW agent, Pathaan, teams up with an ISI agent to stop a rogue former agent from unleashing a deadly virus on India. Starring Shah Rukh Khan, Deepika Padukone, and John Abraham, it's part of the YRF Spy Universe.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="raone.jpeg" alt="raone" style="width:350px;height:350px;">
+              </div>
+              <div class="flip-card-back">
+                  <h1>Ra.One Movie</h1> 
+                  <p>Starring: Shah Rukh Khan</p> 
+                  <p>"Ra.One" is a 2011 Indian superhero film where a video game villain, Ra.One, escapes into the real world to target Prateek, the son of the game's creator, Shekhar Subramaniam. After Ra.One kills Shekhar, Prateek brings the game's hero, G.One, who resembles his father, to life to defeat Ra.One and protect his family. The film stars Shah Rukh Khan in dual roles, with Arjun Rampal as the antagonist.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="gumraah.jpg" alt="gumraah" style="width:350px;height:350px;">
+              </div>
+              <div class="flip-card-back">
+                  <h1>Gumraah Movie</h1> 
+                  <p>Starring:Aditya Roy Kapur</p> 
+                  <p>Aakash Sardana is brutally murdered on a rainy night, and during the investigation, Inspector Shivani Mathur identifies the killer as Arjun Sehgal, an old rival of her senior, ACP Dhiren Yadav. Arjun is arrested but denies all allegations. Shortly after, a highly intoxicated man named Suraj, who looks exactly like Arjun, is also arrested. Now, Shivani and Dhiren face the challenge of having two lookalike suspects, both of whom deny any involvement in the murder.The murder investigation of a young man takes an unexpected turn when the cops discover that the prime suspect has a lookalike.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="gabbar.jpg" alt="gabbar" style="width:350px;height:350px;">
+              </div>
+              <div class="flip-card-back">
+                  <h1>Gabbar Movie</h1> 
+                  <p>Starring: Akshay Kumar</p> 
+                  <p>Gabbar creates a vigilante military network to eliminate corrupt officials. As pressure mounts on the police to find out who is responsible for the killings, a special investigator is summoned to track them down.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="tiger3.jpg" alt="tiger3" style="width:350px;height:350px;">
+              </div>
+              <div class="flip-card-back">
+                  <h1>Tiger 3 Movie</h1> 
+                  <p>Starring: Salman Khan</p> 
+                  <p>"Tiger 3" is a 2023 Hindi action thriller directed by Maneesh Sharma, starring Salman Khan, Katrina Kaif, and Emraan Hashmi. As the fifth installment in the YRF Spy Universe and a sequel to "Ek Tha Tiger" and "Tiger Zinda Hai," the film follows Tiger and Zoya as they battle Zoya's former mentor, rogue ISI agent Aatish Rehman. Aatish manipulates them to stage a coup against the Pakistani government while pursuing a destructive agenda against India. The story also explores the origins of Tiger and Zoya's connection.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="dhoom3.jpg" alt="dhoom3" style="width:350px;height:350px;">
+              </div>
+              <div class="flip-card-back">
+                  <h1>Dhoom 3 Movie</h1> 
+                  <p>Starring: Aamir Khan</p> 
+                  <p>Sahir, a circus entertainer, robs a corrupt bank in Chicago in order to avenge his father's death. However, his troubles increase when Inspector Jai and Ali suspect him of the robbery.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="ghajini.jpg" alt="ghajini" style="width:350px;height:350px;">
+              </div>
+              <div class="flip-card-back">
+                  <h1>Ghajini Movie</h1> 
+                  <p>Starring: Aamir Khan</p> 
+                  <p>"Ghajini" is a 2008 Hindi action thriller directed by A. R. Murugadoss, starring Aamir Khan, Asin Thottumkal, Jiah Khan, and Pradeep Rawat. A remake of Murugadoss's Tamil film, it follows Sanjay Singhania, a powerful entrepreneur who suffers from anterograde amnesia after a brutal attack on him and his fiancée, Kalpana. The film marks Asin's debut in Hindi cinema and is one of Jiah Khan's final films before her death in 2013.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="endgame.jpg" alt="endgame" style="width:350px;height:350px;">
+              </div>
+              <div class="flip-card-back">
+                  <h1>Endgame Movie</h1> 
+                  <p>Starring: Robert,Scarlett,Chris Evans, Chris Hemsworth,Mark,Tom Holland</p> 
+                  <p>After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.</p>
+              </div>
+          </div>
+      </div>
+
+  </section>
+</div>
+
+<div style="background-color: black"  ><center><h1 id="romance" style="color: white; ; height: 60px; margin-top: 15px;font-size: 50px; font-family:'Times New Roman', Times, serif ; ">Romantic Movies</h1></center></div>
+    <section id="actionslideshow">
+        <img class="romance" src="twilight.jpg" alt="romance1" style="width: 100%; height: 500px;">
+        <img class="romance" src="jabwemet.jpg" alt="romance2" style="width: 100%; height: 500px">
+        <img class="romance" src="dilchahtahai.jpeg" alt="romance3" style="width: 100%; height: 500px">
+        <img class="romance" src="kkhh.jpg" alt="romance4" style="width: 100%; height: 500px">
+
+    </section>
+
+    <div>
+        <section id="action-movies">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="bawal.jpeg" alt="bawaal" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Bawaal Movie</h1> 
+                        <p>Starring: Varun Dhawan, Janhvi Kapoor</p> 
+                        <p>Ajay Dixit, a narcissistic history teacher in Lucknow, hides his unhappy life behind a façade of respectability. He keeps his intelligent but epileptic wife, Nisha, grounded to protect his image. When Ajay slaps a student, Atul Raghuvanshi, out of frustration, he discovers Atul is the son of a powerful MLA. Fearing retribution, Ajay impulsively plans a trip to significant World War II sites in Europe, taking Nisha along in hopes of resolving their marital issues. This journey transforms their perspectives, offering them profound lessons on life, history, and their relationship.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="partner movie poster.jpeg" alt="partner" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Partner Movie</h1> 
+                        <p>Starring: Salman Khan, Govinda </p> 
+                        <p>Prem, a Love Guru, helps Bhaskar win over his boss, Priya. Despite using his own simple charm instead of Prem's tactics, Bhaskar succeeds. Meanwhile, Prem falls for Naina, a photojournalist. Misunderstandings arise when Naina believes Prem gave bad advice to a client, but they reconcile after the truth is revealed. In the end, both couples, Bhaskar and Priya, and Prem and Naina, happily marry.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="yehjawani.jpeg" alt="yehjawanihaideewani" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Yeh Jawaani Hai Deewani Movie</h1> 
+                        <p>Starring: Ranbir Kapoor, Deepika Padukone</p> 
+                        <p>Naina, a studious girl, yearns for some fun. A chance meeting with an old classmate, Aditi, leads to a trip that changes her life forever. She meets and falls for Bunny, but he has no time for love.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="My Fault.jpeg" alt="myfault" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>My Fault Movie</h1> 
+                        <p>Starring: Nicole, Gabriel</p> 
+                        <p>Noah has to leave her town, boyfriend and friends behind and move into the mansion of her mother's new rich husband. There she meets Nick, her new stepbrother. They fall madly in love in secret.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ddlj.jpeg" alt="ddlj" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Dilwale Dulhania Le Jaayenge Movie</h1> 
+                        <p>Starring: Shah Rukh Khan, Kajol</p> 
+                        <p>"Dilwale Dulhania Le Jayenge" (DDLJ) is a 1995 Hindi musical romance directed by Aditya Chopra in his debut and produced by Yash Chopra. The film stars Shah Rukh Khan and Kajol as Raj and Simran, two young non-resident Indians who fall in love during a European vacation. When Simran's father insists she marry the man he promised her to, Raj sets out to win her family's approval so they can be together. Filmed in India, London, and Switzerland, DDLJ has become a classic in Indian cinema.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="titanic.jpeg" alt="titanic" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Titanic Movie</h1> 
+                        <p>Starring: Leonardo DiCaprio, Kate Winslet</p> 
+                        <p>In 1996, Brock Lovett finds a drawing of a young woman with a diamond in the Titanic wreck. The woman, Rose Dawson Calvert, reveals she’s the person in the drawing and recounts her Titanic experience.In 1912, Rose falls in love with Jack Dawson, a poor artist, despite being engaged to the wealthy but controlling Cal Hockley. As the Titanic sinks, Jack helps Rose survive, but he dies in the cold. Rose is rescued, changes her name to Rose Dawson, and later drops the diamond into the sea. In the end, she reunites with Jack in a vision.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="badrinath.jpg" alt="badrinath" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Badrinath Ki Dulhania Movie</h1> 
+                        <p>Starring: Varun Dhawan, Alia Bhatt</p> 
+                        <p>The entitled son of a wealthy patriarch pursues a driven young woman, but is in for a powerful lesson when she challenges his assumptions about marriage</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="haseetohphasee.jpg" alt="haseetohphasee" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Hasee Toh Phasee Movie</h1> 
+                        <p>Starring: Sidhart Malhotra, Parineeti Chopra</p> 
+                        <p>Hasee Toh Phasee follows the story of Nikhil, a struggling businessman who, believing he is in love with Karishma, an actress he is engaged to, has to prove his worth to his father-in-law while grappling with the sudden return of his fiancee's geeky sister, Meeta, who he had an encounter with years ago, throwing all of them into uncharted waters as he gets to know Meeta better.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ajab.jpg" alt="ajab" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Ajab Prem Ki Gazab Kahani Movie</h1> 
+                        <p>Starring: Ranbir Kapoor, Katrina Kaif</p> 
+                        <p>The wacky adventures of a young man who is willing to sacrifice his own love to insure the happiness of others, even trying to get the girl of his dreams married to the guy of her dreams.</p>
+                    </div>
+                </div>
+            </div>
+      
+        </section>
+      </div>
+
+      <div style="background-color: black"  ><center><h1 id="trending" style="color: white; ; height: 60px; margin-top: 20px;font-size: 50px; font-family:'Times New Roman', Times, serif ; ">Trending Movies</h1></center></div>
+    <section id="actionslideshow">
+        <img class="trend" src="badla.jpg" alt="romance1" style="width: 100%; height: 500px;">
+        <img class="trend" src="gaslight.jpg" alt="romance2" style="width: 100%; height: 500px">
+        <img class="trend" src="night.jpg" alt="romance3" style="width: 100%; height: 500px">
+        <img class="trend" src="lost.jpg" alt="romance4" style="width: 100%; height: 500px">
+
+    </section>
+
+    <div>
+        <section id="action-movies">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="breathe.jpg" alt="breathe" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Breathe Into The Shadows Series</h1> 
+                        <p>Starring: Abhishek Bacchan</p> 
+                        <p>Dr. Avinash Sabharwal (Bachchan) finds his 6-year-old daughter Siya kidnapped by a masked man. The kidnapper demands that Sabharwal kills a man in order to get his daughter back. The plot revolves around the lengths Avinash will go to save his daughter.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="special.jpeg" alt="special" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Special Ops Series</h1> 
+                        <p>Starring: Kay Kay Menon</p> 
+                        <p>The series follows Himmat Singh (Menon) of the Research and Analysis Wing who finds similar patterns in terrorist attacks and is convinced a single person is behind all the attacks. His task force team of five agents living in various parts of the world aim to catch the mastermind.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="jaanejaan.jpg" alt="jaanejaan" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Jaane Jaan Movie</h1> 
+                        <p>Starring: Kareena Kapoor</p> 
+                        <p>When a single mother is caught in a crime investigation, her neighbor — a gifted math teacher — offers to help and a relentless cop digs into the case.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="dunki.jpg" alt="dunki" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Dunki Movie</h1> 
+                        <p>Starring: Shah Rukh Khan</p> 
+                        <p>When his friends in Punjab struggle to clear the immigration process, an ex-soldier guides them on a risky journey to enter the UK without permission.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="thursday.jpeg" alt="thursday" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>A Thursday Movie</h1> 
+                        <p>Starring: Yami Gautam</p> 
+                        <p>Naina, a playschool teacher, takes 16 students hostage. Rattling the police and the leaders, her demands send shockwaves through the country.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="drishyam1.jpg" alt="drishyam1" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Drishyam 1 Movie</h1> 
+                        <p>Starring: Ajay Devgn, Tabu</p> 
+                        <p>Desperate measures are taken by a man who tries to save his family from the dark side of the law, after they commit an unexpected crime.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="drishyam2.jpg" alt="drishyam2" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Drishyam 2 Movie</h1> 
+                        <p>Starring: Ajay Devgn, Tabu</p> 
+                        <p>A gripping tale of an investigation and a family which is threatened by it. Will Vijay Salgaonkar be able to protect his family this time?</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="farzi.jpg" alt="farzi" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Farzi Series</h1> 
+                        <p>Starring: Shahid Kapoor</p> 
+                        <p>An artist who gets pulled into the murky high stakes of a con job and a fiery task force officer on the mission to rid the country of his menaces in a fast-paced, edgy one-of-a-kind thriller.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="taaza.jpg" alt="taaza" style="width:350px;height:350px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Taaza Khabar Series</h1> 
+                        <p>Starring: Bhuvan Bam</p> 
+                        <p>A Sanitation worker, how he stumbles upon magical powers which leads to a riveting new ride for the man, and how it stirs his humble life.</p>
+                    </div>
+                </div>
+            </div>
+      
+        </section>
+      </div>
+
+      <div id="review" class="review-section" >
+        <h2>Leave a Review</h2>
+        <form action="#" method="post" class="review-form">
+            <label for="movie-name">Movie Name</label>
+            <input type="text" id="movie-name" name="movie-name" placeholder="Enter the movie name">
+    
+            <label for="user-name">Your Name</label>
+            <input type="text" id="user-name" name="user-name" placeholder="Enter your name">
+    
+            <label for="review-text">Your Review</label>
+            <textarea id="review-text" name="review-text" rows="5" placeholder="Share your thoughts on the movie"></textarea>
+    
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+
+    <div id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <form action="#" method="post" class="contact-form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+    
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+    
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Enter the subject">
+    
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Enter your message"></textarea>
+    
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ReVue. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+// Automatic Slideshow For Action Movies - change image every 3 seconds
+var myIndex = 0;
+carousel1();
+
+function carousel1() {
+  var i;
+  var x = document.getElementsByClassName("action");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel1, 3000);
+}
+
+// Automatic Slideshow For Action Movies - change image every 3 seconds
+var romIndex = 0;
+carousel2();
+
+function carousel2() {
+  var i;
+  var x = document.getElementsByClassName("romance");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  romIndex++;
+  if (romIndex > x.length) {romIndex = 1}
+  x[romIndex-1].style.display = "block";
+  setTimeout(carousel2, 3000);
+}
+
+// Automatic Slideshow For Action Movies - change image every 3 seconds
+var trendIndex = 0;
+carousel3();
+
+function carousel3() {
+  var i;
+  var x = document.getElementsByClassName("trend");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  trendIndex++;
+  if (trendIndex > x.length) {trendIndex = 1}
+  x[trendIndex-1].style.display = "block";
+  setTimeout(carousel3, 3000);
+}
+
+// Get the button and dropdown content
+var genreButton = document.getElementById("genre-button");
+var genreDropdown = document.getElementById("genre-dropdown");
+
+// Toggle dropdown on button click
+genreButton.addEventListener("click", function() {
+    if (genreDropdown.style.display === "block") {
+        genreDropdown.style.display = "none";
+    } else {
+        genreDropdown.style.display = "block";
+    }
+});
+
+// Close dropdown if clicked outside
+window.addEventListener("click", function(event) {
+    if (!event.target.matches('#genre-button')) {
+        genreDropdown.style.display = "none";
+    }
+});
+</script>
+
+</body>
+</html>
